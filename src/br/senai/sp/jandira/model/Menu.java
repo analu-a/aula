@@ -6,7 +6,7 @@ public class Menu {
 
     //Essa classe vai perguntar o que o usuário quer fazer
 
-    //morango
+
     Tarefas tarefaObj = new Tarefas();
     Scanner teclado = new Scanner(System.in);
     String escolha;
@@ -34,6 +34,11 @@ public class Menu {
                 System.out.println("");
 
             } else if (escolha.equalsIgnoreCase("3")) {
+
+                tarefaObj.listarTarefas();
+                int indice = teclado.nextInt() -1;
+                teclado.nextLine();
+                tarefaObj.editarTarefas(indice);
 
                 System.out.println("");
 

@@ -15,7 +15,9 @@ public class Tarefas {
   Scanner teclado = new Scanner(System.in);
   String nome, dataCriacao, prazo;
   int tamanhoLista;
-  String finalizada;
+  String respostaConclusao;
+
+
 
 
   List<Tarefas> listaTarefas = new ArrayList<>();
@@ -36,8 +38,7 @@ public class Tarefas {
 
       System.out.println("");
 
-      System.out.println("Essa tarefa está pendente ou já foi concluída? [C] - concluída [P] - pendente");
-      finalizada = teclado.nextLine();
+
 
 return tarefas;
     }
@@ -48,12 +49,11 @@ return tarefas;
     }
 //---------------------------------------------------------------------------------------
     //Nessa parte ele lista as tarefas e adiciona elas na lista
-
-
     public void listarTarefas(){
 
       for (Tarefas tarefa : listaTarefas){
         System.out.println(tarefa.nome);
+
 
       }
     }
@@ -84,8 +84,17 @@ return tarefas;
 
 public void editarTarefas(int indice){
 
-    System.out.println("Qual tarefa deseja editar?");
+      if (indice >= 0 && indice < listaTarefas.size()) {
 
+          System.out.println("Qual o número da tarefa deseja editar?");
+          Tarefas tarefas = listaTarefas.get(indice);
+
+         // System.out.println("A tarefa que será alterada é: " + tarefas.nome);
+          System.out.println("Informe o novo nome:");
+          String novoNome = teclado.nextLine();
+          tarefas.nome = novoNome;
+          listaTarefas.set(indice, tarefas);
+      }
 
 }
 
@@ -93,21 +102,15 @@ public void editarTarefas(int indice){
 
 public void concluidas(){
 
-//    System.out.println("Para marcar como concluída digite [C]");
-//    String respostaConclusao = teclado.nextLine();
-//
-//    System.out.println("");
-//
-//    System.out.println("Para marcar como pendente digite [P]");
-//    String respostaPendente = teclado.nextLine();
+    System.out.println("Essa tarefa está pendente ou concluida?");
+    respostaConclusao = teclado.nextLine();
 
-   if (finalizada == "C"){
-       System.out.println(nome + " - Concluída");
 
-   } else if (finalizada == "P") {
-       System.out.println(nome + "Pendente");
+    if (respostaConclusao == "C"){
 
-   }
+    }
+
+
 
 
 }
